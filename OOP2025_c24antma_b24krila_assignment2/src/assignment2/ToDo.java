@@ -10,6 +10,7 @@ public class ToDo {
 		
 		Task task = new HomeTask();
 		Task taskStudy = new StudyTask();
+		System.out.println("Hello World")
 		
 		frame.add(taskStudy.getGuiComponent());
 		frame.add(task.getGuiComponent());
