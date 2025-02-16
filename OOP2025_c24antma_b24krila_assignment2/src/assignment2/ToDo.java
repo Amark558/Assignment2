@@ -21,7 +21,7 @@ public class ToDo  {
 		application.execute();
 		JFrame frame = new JFrame();
 
-		Task task = new HomeTask();
+		Task task = new CustomTask();
 		JPanel buttonPanel = new JPanel();
 		
 
@@ -43,7 +43,7 @@ public class ToDo  {
 		frame.add(buttonPanel,BorderLayout.NORTH);
 		frame.add(taskLabel, BorderLayout.SOUTH);
 
-		frame.setBounds(100, 100, 400, 100);
+		frame.setBounds(100, 100, 600, 400);
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}

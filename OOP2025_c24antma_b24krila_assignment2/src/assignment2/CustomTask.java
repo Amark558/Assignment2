@@ -14,10 +14,47 @@ import javax.swing.border.TitledBorder;
 import se.his.it401g.todo.Task;
 import se.his.it401g.todo.TaskListener;
 
+public class CustomTask extends JPanel implements Task {
 
-public class CustomTask  extends JPanel implements Task  {
+	// Editable text feild
+	private JTextField text;
 
-	@Override
+	//Non editable text feild
+	private JLabel textLabel;
+
+	// Check box for task completion
+	JCheckBox completed = new JCheckBox();
+
+	// listeer that reports changes in the main method
+	private TaskListener listener;
+
+	
+	public CustomTask() {
+		super(new BorderLayout());
+		this.text = new JTextField("New Custom task",20);
+		this.textLabel = new JLabel();
+		this.textLabel.setVisible(false);
+		JPanel center = new JPanel();
+		center.add(text);
+		center.add(textLabel);
+		add(center);
+		
+		TaskInputListener inputListener = new TaskInputListener(this, text, textLabel);
+		this.text.addKeyListener(inputListener);
+		this.textLabel.addMouseListener(inputListener);
+		
+		JButton remove = new JButton("Remove");
+		add(remove,BorderLayout.EAST);
+		remove.addActionListener(inputListener);
+		
+		add(completed,BorderLayout.WEST);
+		completed.addItemListener(inputListener);
+		
+		setMaximumSize(new Dimension(1000,50));
+		setBorder(new TitledBorder(getTaskType()));
+		
+	}
+
 	public String getText() {
 		// TODO Auto-generated method stub
 		return null;
@@ -32,7 +69,7 @@ public class CustomTask  extends JPanel implements Task  {
 	@Override
 	public void setTaskListener(TaskListener t) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
